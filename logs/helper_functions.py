@@ -1,9 +1,11 @@
 import re
 import geoip2.database
+from django.conf import settings
 
 def process_file(file_path):
     ip_country_map = {}
-    reader = geoip2.database.Reader('/home/aibars/Documents/workdir/django_projects/logscanner/ipdata/GeoLite2-Country.mmdb')  # Replace with the actual path to your GeoLite2 database file
+    gl_path = "{}/{}".format(settings.MEDIA_ROOT, "GeoLite2-Country.mmdb")
+    reader = geoip2.database.Reader(gl_path)  
     
     with open(file_path, 'r') as file:
         for line in file:
@@ -27,7 +29,8 @@ def process_file(file_path):
 
 def attack_process_file(file_path):
     ip_country_map = {}
-    reader = geoip2.database.Reader('/home/aibars/Documents/workdir/django_projects/logscanner/ipdata/GeoLite2-Country.mmdb')  # Replace with the actual path to your GeoLite2 database file
+    gl_path = "{}/{}".format(settings.MEDIA_ROOT, "GeoLite2-Country.mmdb")
+    reader = geoip2.database.Reader(gl_path)
     
     with open(file_path, 'r') as file:
         for line in file:
