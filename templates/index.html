@@ -8,14 +8,15 @@
     >
   </div>
   
-    <form name = "form" method="post" enctype="multipart/form-data" action = "{% url "frontpage" %}">
+    <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
+      {% comment %} {{ form.as_p }}   {% endcomment %}
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label form-control-lg">Log Name</label>
-        <input type="text" class="form-control form-control-lg" name="name">
+        <input type="text" class="form-control form-control-lg" name="filename" required/>
       </div>
       <div class="input-group mb-3">
-      <input class="form-control form-control-lg" type="file" name="logFile" aria-describedby="button-addon2"/>
+      <input class="form-control form-control-lg" type="file" name="logFile" aria-describedby="button-addon2" required/>
       <button class="btn btn-outline-primary" type="submit" id="button-addon2">Submit</button>
     </div>
     </form>

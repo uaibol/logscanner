@@ -40,5 +40,8 @@ class Attack(models.Model):
 
 class LogFiles(models.Model):
     name = models.CharField(max_length=255)
-    file = models.FileField(null=True, blank=True)
+    file = models.FileField(null=False, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.name

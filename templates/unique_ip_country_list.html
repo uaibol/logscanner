@@ -3,7 +3,9 @@
   
     <h2>{{ title }}</h2><hr/>
     
-  
+    {% for ip, country in content.items %}
+    {{ forloop.counter }}. IP Address: <text style="color:blue;">{{ ip }}</text>&nbsp;&nbsp;&nbsp; Country Name:  <text style="color:blue;">{{ country }}</text><br/>
+    {% endfor %}
  
 </div>
 {% endblock %}

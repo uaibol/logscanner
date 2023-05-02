@@ -2,6 +2,10 @@
 <div class="bg-light p-5 rounded">
   
     <h2>{{ title }}</h2><hr/>
+    {% for ip, country in content.items %}
+    {{ forloop.counter }}. IP Address: <text style="color:blue;">{{ ip }}</text><br/>
+    {% endfor %}
+
     
   
  
