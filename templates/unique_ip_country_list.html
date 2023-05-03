@@ -1,11 +1,24 @@
 {% extends 'base.html' %} {% block body %}
 <div class="bg-light p-5 rounded">
-  
-    <h2>{{ title }}</h2><hr/>
-    
-    {% for ip, country in content.items %}
-    {{ forloop.counter }}. IP Address: <text style="color:blue;">{{ ip }}</text>&nbsp;&nbsp;&nbsp; Country Name:  <text style="color:blue;">{{ country }}</text><br/>
-    {% endfor %}
- 
+  <h2>{{ title }}</h2>
+  <hr />
+  <table class="table table-sm">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>IP address</th>
+        <th>Country</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ip, country in content.items %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td style="color: blue">{{ ip }}</td>
+        <td>{{ country }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 {% endblock %}

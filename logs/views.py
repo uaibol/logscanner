@@ -54,15 +54,16 @@ def attack_list(request):
     context["title"] = "Attack List"
     lastfile = LogFiles.objects.latest('created_date')
     file_full_path = "{}/{}".format(settings.MEDIA_ROOT, lastfile.file)
-    fh = open(file_full_path, 'r')
+    fh = open(file_full_path, 'r', encoding='iso-8859-15')
     counter = 0
     context["counter"] = counter
     if fh.mode == 'r':
         ip_addresses = attack_process_file(file_full_path)
         uni = ip_addresses
-        context["content"] = uni
+        context["content"] = uni.values()
 
     fh.close()
+    #print(context["content"])
     return render(request, 'attacks_list.html', context)
 
 
